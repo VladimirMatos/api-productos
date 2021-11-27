@@ -7,6 +7,11 @@ router.get('/', async(req,res) =>{
     res.send(buscarProducto);
 });
 
+router.get('/:id', async(req,res)=>{
+    const idParametro = req.params.id;
+    const buscarProductoPorId = await conexionBaseDeDatos.query('CALL sp_GetProductsById(?)', [idParametro]);
+    res.send(buscarProductoPorId);
+});
 
 
 module.exports = router;
