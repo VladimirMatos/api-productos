@@ -13,5 +13,16 @@ router.get('/:id', async(req,res)=>{
     res.send(buscarProductoPorId);
 });
 
+router.post('/', async(req,res) =>{
+    const {nombre,categoria,precio} = req.body;
+    const nuevoProducto ={
+        nombre,
+        categoria,
+        precio
+    }
+    await conexionBaseDeDatos.query('INSERT INTO producto set ?',[nuevoProducto]);
+    const mostrarProductos = await conexionBaseDeDatos.query('CALL sp_GetProducts()');
+    res.send(mostrarProductos);
+});
 
 module.exports = router;
