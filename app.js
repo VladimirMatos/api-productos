@@ -6,10 +6,11 @@ const app = express();
 //Middleware
 app.use(bodyParse.json());
 app.use(morgan('dev'));
+app.use(require('./src/routes/productos.routes'));
 
 
 //Routes
-
+app.use('/api/products', require('./src/routes/productos.routes'));
 
 
 module.exports = app;

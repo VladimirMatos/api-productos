@@ -1,5 +1,6 @@
 const {promisify} =require('util');
 const mysql = require('mysql');
+require('dotenv').config();
 
 
 const keyDataBase = {
