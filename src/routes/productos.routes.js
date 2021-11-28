@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const conexionBaseDeDatos = require('../database/database');
 
+
 router.get('/', async(req,res) =>{
     const buscarProducto = await conexionBaseDeDatos.query('CALL sp_GetProducts()');
     res.send(buscarProducto);
@@ -21,6 +22,7 @@ router.post('/', async(req,res) =>{
         precio
     }
     await conexionBaseDeDatos.query('INSERT INTO producto set ?',[nuevoProducto]);
+    await conexionBaseDeDatos.query('CALL sp_PostBarCodeProducto()');
     const mostrarProductos = await conexionBaseDeDatos.query('CALL sp_GetProducts()');
     res.send(mostrarProductos);
 });
