@@ -30,5 +30,16 @@ const eliminarProductoPorBarCode = async(req,res) => {
     }
 };
 
+const cambiarCodeBarPorId = async(req,res) =>{
+    try {
+        const PRODUCTO_ID =req.params.id;
+        await CONEXION_BASE_DE_DATOS.query('CALL sp_UpdateProductCodeBar(?)',[PRODUCTO_ID]);
+        const MOSTRAR_CODE_BAR = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetBarCode()');
+        res.send(MOSTRAR_CODE_BAR);
+    } catch (error) {
+        res.status.json({message: error});
+    }
+}
 
-module.exports = {buscarBarCode,buscarProductoPorBarCode,eliminarProductoPorBarCode};
+
+module.exports = {buscarBarCode,buscarProductoPorBarCode,eliminarProductoPorBarCode,cambiarCodeBarPorId};

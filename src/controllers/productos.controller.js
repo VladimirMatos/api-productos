@@ -54,7 +54,7 @@ const eliminarProductoPorId = async(req,res) =>{
 };
 
 //Editar un producto por id
-const editarProductoPorId = async(req,res) =>{
+const editarProductoPorId = async(req,res,) =>{
     
     try {
         const ID_PARAMETRO = req.params.id;
@@ -67,6 +67,7 @@ const editarProductoPorId = async(req,res) =>{
         console.log(nuevoBarCode);
         console.log(ID_PARAMETRO);
         await CONEXION_BASE_DE_DATOS.query('UPDATE producto SET ? where id_producto = ?', [nuevoBarCode, ID_PARAMETRO]);
+        res.status(200).json({message: 'Producto editado'});
         //await CONEXION_BASE_DE_DATOS.query('UPDATE barcode SET numbarcode = ' + numbarcode + " where id_producto =" + ID_PARAMETRO);
     } catch (error) {
         console.log(error);
