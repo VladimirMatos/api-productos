@@ -5,7 +5,7 @@ const buscarBarCode = async(req,res) =>{
         const BUSCAR_BARCODE = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetBarCode()');
         res.send(BUSCAR_BARCODE);
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(400).json({message: error});
     }
 };
 
@@ -15,7 +15,7 @@ const buscarProductoPorBarCode = async(req,res)=>{
         const BUSCAR_PRODUCTO_POR_BAR_CODE = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProductsByBarCode(?)', [BAR_CODE_PARAMETRO]);
         res.send(BUSCAR_PRODUCTO_POR_BAR_CODE);  
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(404).json({message: error});
     }
 };
 
@@ -26,7 +26,7 @@ const eliminarProductoPorBarCode = async(req,res) => {
         res.send.json({message:'Producto eliminado'});
         res
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(404).json({message: error});
     }
 };
 
@@ -37,7 +37,7 @@ const cambiarCodeBarPorId = async(req,res) =>{
         const MOSTRAR_CODE_BAR = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetBarCode()');
         res.send(MOSTRAR_CODE_BAR);
     } catch (error) {
-        res.status.json({message: error});
+        res.status(404).json({message: error});
     }
 }
 

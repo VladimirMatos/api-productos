@@ -7,7 +7,7 @@ const buscarProducto = async(req ,res) =>{
         const BUSCAR_PRODUCTO = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProducts()');
         res.send(BUSCAR_PRODUCTO);
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(400).json({message: error});
     }
 };
 
@@ -19,7 +19,7 @@ const buscarProductoPorId = async (req,res) =>{
         const BUSCAR_PRODUCTO_POR_ID = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProductsById(?)', [ID_PARAMETRO]);
         res.send(BUSCAR_PRODUCTO_POR_ID);
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(404).json({message: error});
     }
 };
 
@@ -38,7 +38,7 @@ const crearProducto = async(req,res) => {
         const MOSTRAR_PRODUCTOS = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProducts()');
         res.send(MOSTRAR_PRODUCTOS);
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(400).json({message: error});
     } 
 };
 
@@ -49,7 +49,7 @@ const eliminarProductoPorId = async(req,res) =>{
         await CONEXION_BASE_DE_DATOS.query('CALL sp_DeleteByID(?)', [ID_PARAMETRO]);
         res.status(200).json({message:'Producto eliminado'});
     } catch (error) {
-        res.status(422).json({message: error});
+        res.status(404).json({message: error});
     }
 };
 
@@ -71,7 +71,7 @@ const editarProductoPorId = async(req,res,) =>{
         //await CONEXION_BASE_DE_DATOS.query('UPDATE barcode SET numbarcode = ' + numbarcode + " where id_producto =" + ID_PARAMETRO);
     } catch (error) {
         console.log(error);
-        res.status(422).json({message: error});
+        res.status(400).json({message: error});
     }
 }
 
