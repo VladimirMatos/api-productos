@@ -30,5 +30,7 @@ ROUTER.delete('/:barCode', async(req,res) => {
     } catch (error) {
         res.status(422).json({message: error});
     }
-})
+});
+
+
 module.exports = ROUTER;
