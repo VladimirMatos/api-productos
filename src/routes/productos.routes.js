@@ -1,30 +1,47 @@
 const { Router } = require("express");
-const router = Router();
-const conexionBaseDeDatos = require('../database/database');
+const ROUTER = Router();
+const CONEXION_BASE_DE_DATOS = require('../database/database');
 
 
-router.get('/', async(req,res) =>{
-    const buscarProducto = await conexionBaseDeDatos.query('CALL sp_GetProducts()');
-    res.send(buscarProducto);
+ROUTER.get('/', async(req,res) =>{
+    try {
+        const BUSCAR_PRODUCTO = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProducts()');
+        res.send(BUSCAR_PRODUCTO);
+    } catch (error) {
+        res.status(422).json({message: error});
+    }
+
 });
 
-router.get('/:id', async(req,res)=>{
-    const idParametro = req.params.id;
-    const buscarProductoPorId = await conexionBaseDeDatos.query('CALL sp_GetProductsById(?)', [idParametro]);
-    res.send(buscarProductoPorId);
+ROUTER.get('/:id', async(req,res)=>{
+    try {
+        const ID_PARAMETRO = req.params.id;
+        const BUSCAR_PRODUCTO_POR_ID = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProductsById(?)', [ID_PARAMETRO]);
+        res.send(BUSCAR_PRODUCTO_POR_ID);
+    } catch (error) {
+        res.status(422).json({message: error});
+    }
+
 });
 
-router.post('/', async(req,res) =>{
+
+ROUTER.post('/', async(req,res) =>{
     const {nombre,categoria,precio} = req.body;
     const nuevoProducto ={
         nombre,
         categoria,
         precio
     }
-    await conexionBaseDeDatos.query('INSERT INTO producto set ?',[nuevoProducto]);
-    await conexionBaseDeDatos.query('CALL sp_PostBarCodeProducto()');
-    const mostrarProductos = await conexionBaseDeDatos.query('CALL sp_GetProducts()');
-    res.send(mostrarProductos);
+
+    try {
+        await CONEXION_BASE_DE_DATOS.query('INSERT INTO producto set ?',[nuevoProducto]);
+        await CONEXION_BASE_DE_DATOS.query('CALL sp_PostBarCodeProducto()');
+        const MOSTRAR_PRODUCTOS = await CONEXION_BASE_DE_DATOS.query('CALL sp_GetProducts()');
+        res.send(MOSTRAR_PRODUCTOS);
+    } catch (error) {
+        res.status(422).json({message: error});
+    }
+
 });
 
-module.exports = router;
+module.exports = ROUTER;
