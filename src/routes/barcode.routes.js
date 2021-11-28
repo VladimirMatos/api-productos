@@ -21,4 +21,15 @@ ROUTER.get('/:barCode', async(req,res)=>{
     }
 });
 
+ROUTER.delete('/:barCode', async(req,res) => {
+    try {
+        const BAR_CODE_PARAMETRO = req.params.barCode;
+        await CONEXION_BASE_DE_DATOS.query('CALL sp_DeleteBarCode(?)', [BAR_CODE_PARAMETRO]);
+        const MOSTRAR_PRODUCTOS = CONEXION_BASE_DE_DATOS.query('CALL sp_GetProducts()');
+        res.send(MOSTRAR_PRODUCTOS);
+        res
+    } catch (error) {
+        res.status(422).json({message: error});
+    }
+})
 module.exports = ROUTER;

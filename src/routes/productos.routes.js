@@ -24,7 +24,6 @@ ROUTER.get('/:id', async(req,res)=>{
 
 });
 
-
 ROUTER.post('/', async(req,res) =>{
     const {nombre,categoria,precio} = req.body;
     const nuevoProducto ={
@@ -43,5 +42,8 @@ ROUTER.post('/', async(req,res) =>{
     }
 
 });
+
+
+
 
 module.exports = ROUTER;
