@@ -5,6 +5,8 @@ const app = express();
 
 //import routes
 const productoRoutes = require('./src/routes/productos.routes');
+const barCodeRoutes = require('./src/routes/barcode.routes');
+
 
 //Middleware
 app.use(bodyParse.json());
@@ -15,7 +17,7 @@ app.use(require('./src/routes/barcode.routes'));
 
 //Routes
 app.use('/api/products', productoRoutes);
-app.use('/api/barcode', require('./src/routes/barcode.routes'));
+app.use('/api/barcode', barCodeRoutes);
 
 
 module.exports = app;
