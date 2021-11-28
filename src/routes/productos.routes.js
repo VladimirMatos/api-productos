@@ -43,6 +43,16 @@ ROUTER.post('/', async(req,res) =>{
 
 });
 
+ROUTER.delete('/:id', async(req,res) => {
+    try {
+        const ID_PARAMETRO = req.params.id;
+        await CONEXION_BASE_DE_DATOS.query('CALL sp_DeleteByID(?)', [ID_PARAMETRO]);
+        res.send.json({message:'Producto eliminado'});
+        res
+    } catch (error) {
+        res.status(422).json({message: error});
+    }
+})
 
 
 
