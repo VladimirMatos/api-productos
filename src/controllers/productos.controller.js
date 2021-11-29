@@ -64,8 +64,7 @@ const editarProductoPorId = async(req,res,) =>{
             categoria,
             precio
         }
-        console.log(nuevoBarCode);
-        console.log(ID_PARAMETRO);
+
         await CONEXION_BASE_DE_DATOS.query('UPDATE producto SET ? where id_producto = ?', [nuevoBarCode, ID_PARAMETRO]);
         res.status(200).json({message: 'Producto editado'});
         //await CONEXION_BASE_DE_DATOS.query('UPDATE barcode SET numbarcode = ' + numbarcode + " where id_producto =" + ID_PARAMETRO);
