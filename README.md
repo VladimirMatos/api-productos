@@ -2,7 +2,7 @@
 Esta API podemos Lista,Crear,Eliminar y Editar productos con sus respectivos codigos de barras a los cuales se le puede aplicar CRUD
 
 ## ENDPOINT
-http://api-productos.ngrok.io/api/
+https://api-productos.ngrok.io/api/
 
 ## METODOS
 GET/POST/DELETE/PATCH
@@ -15,7 +15,7 @@ GET/POST/DELETE/PATCH
 ### Request
 ######  `GET /products/`
 #### Ejemplo URL
- `http://api-productos.ngrok.io/api/products/` 
+ `https://api-productos.ngrok.io/api/products/` 
 ### Response Json
 
     [
@@ -39,7 +39,7 @@ GET/POST/DELETE/PATCH
 ##### :id = "id_producto": 1
 
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/products/1`
+`https://api-productos.ngrok.io/api/products/1`
 
 ### Response Json
     [
@@ -56,7 +56,7 @@ GET/POST/DELETE/PATCH
 ###### `GET /barcode/:barCode`
 ##### :barCode = "numbarcode": 1770879470437
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/barcode/1770879470437`
+`https://api-productos.ngrok.io/api/barcode/1770879470437`
 
 ### Response Json
     [
@@ -72,7 +72,7 @@ GET/POST/DELETE/PATCH
 ### Request
 ##### `POST /products`
 ### Ejemplo URL
-`http://api-productos.ngrok.io/api/products`
+`https://api-productos.ngrok.io/api/products`
 ### Body Json
     {
 	"nombre": "Logitech G915 TKL",
@@ -109,7 +109,7 @@ GET/POST/DELETE/PATCH
 #### Ejemplo de :id
 ##### :id = "id_producto": 1
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/products/1`
+`https://api-productos.ngrok.io/api/products/1`
 ### Body Json
     {
 	"nombre": "RAZER HUNTSMAN V2",
@@ -130,7 +130,7 @@ GET/POST/DELETE/PATCH
 #### Ejemplo de :id
 ##### :id = "id_producto": 1
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/products/1`
+`https://api-productos.ngrok.io/api/products/1`
 
 ### Response Json
 {
@@ -144,7 +144,7 @@ GET/POST/DELETE/PATCH
 ###### `DELETE /barcode/:barCode`
 ##### :barCode = "numbarcode": 1770879470437
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/barcode/1770879470437`
+`https://api-productos.ngrok.io/api/barcode/1770879470437`
 
 ### Response Json
 {
@@ -159,7 +159,7 @@ GET/POST/DELETE/PATCH
 ### Request
 ###### `Get /barcode/`
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/barcode/`
+`https://api-productos.ngrok.io/api/barcode/`
 
 ### Response Json
   [
@@ -178,7 +178,7 @@ GET/POST/DELETE/PATCH
 #### Ejemplo de :id
 ##### :id = "id_producto": 1
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/barcode/buscar/3`
+`https://api-productos.ngrok.io/api/barcode/buscar/3`
 
 ### Response Json
   [
@@ -197,7 +197,7 @@ GET/POST/DELETE/PATCH
 #### Ejemplo de :id
 ##### :id = "id_producto": 1
 #### Ejemplo URL
-`http://api-productos.ngrok.io/api/barcode/3`
+`https://api-productos.ngrok.io/api/barcode/3`
 
 ### Response Json
   [
